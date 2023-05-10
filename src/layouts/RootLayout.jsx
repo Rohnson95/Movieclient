@@ -47,10 +47,11 @@ export default function RootLayout() {
                 <h1>Film Client</h1>
                     <Nav>    
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="about">About</NavLink>
+                    <NavLink to="about">Movies</NavLink>
                     </Nav>
             </HeaderContainer>
             <MainContainer>
+                <NavLink to=":id"/>
                 <Outlet />
             </MainContainer>
         </div>

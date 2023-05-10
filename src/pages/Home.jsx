@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {useState, useEffect} from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export default function CardList () {
 const [data,setData] = useState([]);
@@ -42,13 +43,19 @@ useEffect(() => {
 return(
     
     <Div className="home">
+        <NavLink to=":id">
         {data.map(item =>(
             <DivCard key = {item.PersonId}>
                <h1>{item.firstName}</h1>
                <p>Click To View</p>
                <h3>{item.email}</h3>
+               
             </DivCard>
+            
         ))}
+        </NavLink>
+        <Outlet />
+        
     </Div>
 )
 }
