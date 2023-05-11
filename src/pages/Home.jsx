@@ -2,12 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {useState, useEffect} from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, Link, useParams, useNavigate } from 'react-router-dom';
 
 export default function CardList () {
 const [data,setData] = useState([]);
 const api = 'https://localhost:7283';
-
+const navigate= useNavigate();
+const handleClick = (item) => {
+    navigate(`/LikedGenres/${item.personId}`)
+}
 
 const Div = styled.div`
 display:flex;
@@ -32,8 +35,10 @@ transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
     transform: scale(1.5);
 }
 `;
+
 useEffect(() => {
     const fetchData = async () => {
+
         const result = await axios(api + '/api/Person',);
         setData(result.data);
     };
@@ -43,19 +48,15 @@ useEffect(() => {
 return(
     
     <Div className="home">
-        <NavLink to=":id">
         {data.map(item =>(
-            <DivCard key = {item.PersonId}>
+            <DivCard onClick={() => handleClick(item)} key = {item.personId}>
                <h1>{item.firstName}</h1>
                <p>Click To View</p>
-               <h3>{item.email}</h3>
-               
-            </DivCard>
-            
+               <h3>{item.email}</h3>   
+            </DivCard>  
         ))}
-        </NavLink>
         <Outlet />
-        
     </Div>
+
 )
 }

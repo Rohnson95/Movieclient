@@ -29,13 +29,18 @@ margin: 0;
 const NavContainer = styled.div`
 background:black;
 display:flex;
+flex-direction:row;
+gap:5px;
 `;
 const Nav = styled.div`
 display:flex;
 flex-direction:row;
 gap: 10px;
-background:red;
+background:#bb86fc;
+color: #212121;
 padding: .1em;
+border-radius:3%;
+
 `;
 const NavSeparator = styled.div`
 background: blue;
@@ -45,13 +50,19 @@ export default function RootLayout() {
         <div className="root-layout">
             <HeaderContainer>
                 <h1>Film Client</h1>
+                    <NavContainer>
                     <Nav>    
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to="about">Movies</NavLink>
                     </Nav>
+                    <Nav>
+                    <NavLink to="movies">Movies</NavLink>
+                    </Nav>
+                    <Nav>
+                    <NavLink to="users">Users</NavLink>
+                    </Nav>
+                    </NavContainer>
             </HeaderContainer>
             <MainContainer>
-                <NavLink to=":id"/>
                 <Outlet />
             </MainContainer>
         </div>

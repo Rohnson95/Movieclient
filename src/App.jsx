@@ -6,18 +6,17 @@ import {Route,
         RouterProvider} from 'react-router-dom';
 
 import CardList from './pages/Home';
-import About from './pages/About';
+import About from './pages/Movies';
 import RootLayout from './layouts/RootLayout';
 import LikedGenres from './pages/LikedGenres';
+import Movies from './pages/Movies';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element= {<CardList />} />
-      <Route path = "/about" element= {<About />} />
-      <Route path=":id" element ={<LikedGenres />} />
-      
-      
+      <Route index element= {<CardList />}/>
+      <Route path="LikedGenres/:personId" element={<LikedGenres/>}/>
+      <Route path="movies" element={<Movies/>}/>
     </Route>
   )
 )
