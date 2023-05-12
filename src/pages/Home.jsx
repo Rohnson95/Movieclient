@@ -15,7 +15,6 @@ const handleClick = (item) => {
 const Div = styled.div`
 display:flex;
 flex-wrap: wrap;
-
 `;
 const DivCard = styled.div`
 display: flex;
@@ -26,9 +25,7 @@ width: 10em;
 align-items: center;
 border: #FFFFFF solid 1px;
 border-radius: 5%;
-//background: #212121;
 background: #bb86fc;
-//color: #FFFFFF;
 color: #212121;
 transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
 &:hover {

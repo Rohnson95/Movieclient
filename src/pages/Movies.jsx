@@ -2,9 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import {useState,useEffect} from 'react'
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, Link } from 'react-router-dom';
 //Pages
 import MovieCard from './MovieCard';
+import AddRating from './AddRating';
 
 const CardListContainer = styled.div`
 display:flex;
@@ -26,7 +27,6 @@ min-height: 100vh;
 padding: 0;
 margin: 0;
 `;
-
 
 export default function Movies() {
     const [data,setData] = useState({results:[]});
@@ -55,14 +55,17 @@ export default function Movies() {
     Page {data.page} of {data.total_pages}
     <button onClick = {nextPage}>Next Page</button>
     <button onClick = {prevPage}>Prev Page</button>
+    <Outlet />
     <MainContainer>
         {data.results.map(movie =>
+
          <CardListContainer onClick={() => handleClick(movie)} key = {movie.id}>   
             <MovieCard key={movie.id} Title = {movie.title} poster={POSTER_PREFIX + movie.poster_path} />
         </CardListContainer>
+
         )}
-    <Outlet />
     </MainContainer>
     </>     
   )
 }
+// onClick={() => handleClick(movie)} key = {movie.id}

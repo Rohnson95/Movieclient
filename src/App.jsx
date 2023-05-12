@@ -16,7 +16,7 @@ const router = createBrowserRouter(
       <Route index element= {<CardList />}/>
       <Route path="LikedGenres/:personId" element={<LikedGenres/>}/>
       <Route path="movies" element={<Movies/>}/>
-      <Route path="AddRating/:id" element={<AddRating/>}/>
+          <Route path="movies/AddRating/:movieId" element={<AddRating/>}/>
     </Route>
   )
 )
