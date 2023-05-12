@@ -49,7 +49,7 @@ export default function RootLayout() {
   return (
         <div className="root-layout">
             <HeaderContainer>
-                <h1>Film Client</h1>
+                <NavLink to="/"><h1>Film Client</h1></NavLink>
                     <NavContainer>
                     <Nav>    
                     <NavLink to="/">Home</NavLink>
