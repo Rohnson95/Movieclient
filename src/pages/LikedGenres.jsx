@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import {useState, useEffect} from 'react';
+import {useState, useEffect,} from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 export default function LikedGenres(){
+
     let { personId } = useParams();
     const [data,setData] = useState([]);
     const[genre,setGenre] = useState([]);
     const[allGenres,setAllGenres] = useState([]);
-    const [likedGenres, setLikedGenres] = useState([])
+    const [fkPersonId, setFkPersonId] = useState("");
     const api = 'https://localhost:7283';
-    useEffect(() => {
+    const Calls = () =>{
         const fetchData = async () => {
             const result = await axios( `${api}/api/GetRatings/?personId=${personId}`);
             setData(result.data);
@@ -26,9 +27,12 @@ export default function LikedGenres(){
             setAllGenres(result.data);
         }
         fetchAllGenres();
-    }, [])
+    };
+    useEffect(() => {
+        Calls();
+    }, []);
 
-    const DivCard = styled.div`
+const DivCard = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
@@ -84,6 +88,13 @@ width:15em;
 justify-content: center;
 padding: .1em;
 `;
+
+const PostGenre = async(e) => {
+    setFkPersonId(personId);
+    const selectedGenreId = e.target.value;
+      await axios.post(`${api}/api/Person/toGenre/?personId=${personId}&GenreId=${selectedGenreId}`);
+      Calls();
+};
     return(
        <Div>
         <DivCard>
@@ -92,7 +103,7 @@ padding: .1em;
                 if(!genre.find((gen) => gen.genreId === genres.genreId)) {
                     return (
                         <ButtonDiv key={genres.genreId}>
-                            <Button>{genres.title}</Button>
+                            <Button value={genres.genreId}onClick={(e) => {PostGenre(e)}}>{genres.title}</Button>
                         </ButtonDiv>
                     )
                 }
