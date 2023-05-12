@@ -9,6 +9,7 @@ export default function LikedGenres(){
     const [data,setData] = useState([]);
     const[genre,setGenre] = useState([]);
     const[allGenres,setAllGenres] = useState([]);
+    const[name,setName] = useState([]);
     const [fkPersonId, setFkPersonId] = useState("");
     const api = 'https://localhost:7283';
     const Calls = () =>{
@@ -27,6 +28,11 @@ export default function LikedGenres(){
             setAllGenres(result.data);
         }
         fetchAllGenres();
+        const fetchName = async () => {
+            const result = await axios (`${api}/api/Person/{id}?PersonId=${personId}`);
+            setName(result.data);
+        }
+        fetchName();
     };
     useEffect(() => {
         Calls();
@@ -46,18 +52,19 @@ const DivCard = styled.div`
     color: #212121;
 `;
 const P = styled.p`
-border: solid 1px #35e841;
+border: solid 1px black;
 width:38px;
 display:flex;
 justify-content: center;
 border-radius: 50%;
 background: #444;
-color: #35e841;
+color: #bb86fc;
 transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
 &:hover {
     transform: scale(1.5);
 }
 `;
+
 const Div = styled.div`
 display:flex;
 flex-wrap: wrap;
@@ -76,7 +83,7 @@ font-weight: 650;
 transition: transform .4s cubic-bezier(0.77,0.2,0.05,1.0);
 padding: .2em;
 &:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     background: #444;
     color: #bb86fc;
 }
@@ -119,11 +126,11 @@ const PostGenre = async(e) => {
             ))}
         </DivCard>
         <DivCard className="info">
+            {name.map(nam =>(<h3>{nam.firstName}'s</h3>))}
             <h2>Liked Genres</h2>
              {genre.map(gen =>(
                 <div>
                     <h3>{gen.title}</h3>
-                    <p>{gen.description}</p>
                 </div>
                ))}  
             <Outlet />

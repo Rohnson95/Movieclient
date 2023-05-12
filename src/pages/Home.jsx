@@ -27,9 +27,9 @@ border: #FFFFFF solid 1px;
 border-radius: 5%;
 background: #bb86fc;
 color: #212121;
-transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
+transition: transform .3s cubic-bezier(0.77,0.2,0.05,1.0);
 &:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
 }
 `;
 

@@ -15,6 +15,8 @@ padding: 1em;
 height: 50vh;
 width: 25em;
 box-sizing:border-box;
+
+
 `;
 const MainContainer = styled.main`
 display:flex;
@@ -65,6 +67,8 @@ export default function Movies() {
 
         )}
     </MainContainer>
+    <button onClick = {nextPage}>Next Page</button>
+    <button onClick = {prevPage}>Prev Page</button>
     </>     
   )
 }

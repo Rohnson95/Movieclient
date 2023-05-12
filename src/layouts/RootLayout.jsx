@@ -51,7 +51,7 @@ export default function RootLayout() {
             <HeaderContainer>
                 <NavLink to="/"><h1>Film Client</h1></NavLink>
                     <NavContainer>
-                    <Nav>    
+                    <Nav className="root-nav">    
                     <NavLink to="/">Home</NavLink>
                     </Nav>
                     <Nav>
