@@ -6,32 +6,20 @@ import {Route,
         RouterProvider} from 'react-router-dom';
 
 import CardList from './pages/Home';
-import About from './pages/Movies';
 import RootLayout from './layouts/RootLayout';
 import LikedGenres from './pages/LikedGenres';
 import Movies from './pages/Movies';
-
+import AddRating from './pages/AddRating'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element= {<CardList />}/>
       <Route path="LikedGenres/:personId" element={<LikedGenres/>}/>
       <Route path="movies" element={<Movies/>}/>
+      <Route path="AddRating/:id" element={<AddRating/>}/>
     </Route>
   )
 )
-
-const Nav = styled.nav`
-display:flex;
-flex-direction:row;
-margin: .2em;
-justify-content:start;
-align-items: end;
-background:red;
-align-content:end;
-`;
-
-
 function App() {
   return (
         <RouterProvider router={router} />

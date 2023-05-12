@@ -6,39 +6,34 @@ flex-direction:column;
 flex-wrap:wrap;
 justify-content: center;
 align-items:center;
-padding: .5em;
+padding:0.5em;
+box-sizing:border-box;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
 `;
 const CardImage = styled.img`
 display:flex;
 flex-direction:column;
-width:20em;
-margin-top:1em;
+width:22em;
 border: 1px solid #444;
 transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
 &hover{
     transform: scale(1.5);
 };
 `;
-const Overview = styled.p`
-display:flex;
-width:18em;
-font-size: 1em;
-background:#bb86fc;
-color: #121212;
-border: solid 1px #212121;
-border-radius: .2em;
-padding: 1em;
-`;
 const Title = styled.h1`
 color: #bb86fc;
-font-size: 1.5em;
+font-size: 1.2em;
+max-width: 13em;
+display:flex;
+text-align: center;
 `;
 export default function MovieCard(props) {
   return (
     <CardListContainer>
+        
         <CardImage src = {props.poster} className="Film-logo" />
         <Title>{props.Title}</Title>
-        <Overview>{props.Overview}</Overview>
     </CardListContainer>
   )
 }

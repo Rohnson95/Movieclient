@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {useState, useEffect} from 'react';
-import { NavLink, Outlet, Link, useParams, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export default function CardList () {
 const [data,setData] = useState([]);

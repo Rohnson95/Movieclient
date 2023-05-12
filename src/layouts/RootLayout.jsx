@@ -57,9 +57,6 @@ export default function RootLayout() {
                     <Nav>
                     <NavLink to="movies">Movies</NavLink>
                     </Nav>
-                    <Nav>
-                    <NavLink to="users">Users</NavLink>
-                    </Nav>
                     </NavContainer>
             </HeaderContainer>
             <MainContainer>
