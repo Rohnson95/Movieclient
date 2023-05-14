@@ -16,12 +16,10 @@ HOW TO USE:
 
 You Can find some images of how this looks below!
 
-
-![image](https://github.com/Rohnson95/Movieclient/assets/97821367/4a8f2625-1a36-4455-adc9-ee2a8fbb6e13)
-
-![image](https://github.com/Rohnson95/Movieclient/assets/97821367/07ccf4f3-3f9a-449a-a303-7edf31363405)
-![image](https://github.com/Rohnson95/Movieclient/assets/97821367/20c584c5-5713-4166-a9cd-98611eb52d2f)
-![image](https://github.com/Rohnson95/Movieclient/assets/97821367/ded26651-f99b-4b4d-bc86-541d241ce3e7)
+![image](https://github.com/Rohnson95/Movieclient/assets/97821367/6f0f0e70-dd20-49cb-a34a-7e686a7f34dc)
+![image](https://github.com/Rohnson95/Movieclient/assets/97821367/81aaaa20-0b56-41f5-b942-2f539192b224)
+![image](https://github.com/Rohnson95/Movieclient/assets/97821367/5036432a-85df-49c3-aab7-76110fc6760f)
+![image](https://github.com/Rohnson95/Movieclient/assets/97821367/7704a68e-d9e9-4014-a18a-80f701e8748a)
 
 
 
