@@ -5,9 +5,12 @@ import {useState, useEffect} from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 export default function CardList () {
-const [data,setData] = useState([]);
-const api = 'https://localhost:7283';
+const [data,setData] = useState([]); //sets data to each person from the persons table in the database
+const api = 'https://localhost:7283'; 
+
+//navigate that connects the personId to the likedgenres page
 const navigate= useNavigate();
+//navigates the used to LikedGenres
 const handleClick = (item) => {
     navigate(`/LikedGenres/${item.personId}`)
 }
@@ -41,7 +44,7 @@ useEffect(() => {
     };
     fetchData();
 }, [])
-
+//renders the users 
 return(
     <>
     <h1>Users</h1>

@@ -1,3 +1,4 @@
+//Imports
 import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
@@ -68,13 +69,14 @@ gap: 5px;
 `;
 
 export default function Movies() {
-    const [data,setData] = useState({results:[]});
-    const [page,setPage] = useState(1);
-    const [search,setSearch] = useState("");
-    const [movieSearch,setMovieSearch] = useState({results:[]});
-    const TMDB_GET_MOVIES = 'https://api.themoviedb.org/3/discover/movie?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate';
-    const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
-    const TMDB_GET_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US&query=${search}&page=1&include_adult=false`
+    const [data,setData] = useState({results:[]}); //sets the state of the data to the api endpoints results
+    const [page,setPage] = useState(1); //gets the total pages from the external api and displays them
+    const [search,setSearch] = useState(""); //sets the state of the searchbar to a blank string until something gets written in
+    const [movieSearch,setMovieSearch] = useState({results:[]}); //sets the state and displays the movie you've searched for based on the input in the searchbar
+    const TMDB_GET_MOVIES = 'https://api.themoviedb.org/3/discover/movie?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'; //API endpoint to retrieve movies 
+    const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original'; // a prefix to get the first part of what's needed for a posterpath to display the image for a specific film
+    const TMDB_GET_MOVIE_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US&query=${search}&page=1&include_adult=false` //API endpoint to display searchresults based on the state of search
+    //gets data for the movie page to display movies from TMDB
     useEffect (() => {
         const fetchData = async () => {
             const result = await axios(TMDB_GET_MOVIES + '&page=' + page)
@@ -82,6 +84,7 @@ export default function Movies() {
         };
         fetchData();
     },[page]);
+    //fetches data from the moviesearch endpoint
     useEffect (() => {
         const fetchMovie = async () => {
             const result = await axios(TMDB_GET_MOVIE_SEARCH)
@@ -89,17 +92,20 @@ export default function Movies() {
         };
         fetchMovie();
     },[search]);
+    //Gives possibility to go to next page in movies tab
     const nextPage = () => {
         setPage((prevState) => prevState + 1);
     }
+    //Gives possibility to go to previous page in movies tab
     const prevPage = () => {
         setPage((prevState) => prevState - 1);
     }
 
-    const navigate= useNavigate();
+    const navigate= useNavigate(); //react-router to navigate to the AddRating page
     const handleClick = (movie) => {
         navigate(`/movies/AddRating/${movie.id}`)
     }
+    //renders everything
   return (
     <>
     Page {data.page} of {data.total_pages}

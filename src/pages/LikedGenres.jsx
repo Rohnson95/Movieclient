@@ -6,13 +6,15 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 
 
 export default function LikedGenres(){
-    let { personId } = useParams();
-    const [data,setData] = useState([]);
-    const[genre,setGenre] = useState([]);
-    const[allGenres,setAllGenres] = useState([]);
-    const[name,setName] = useState([]);
-    const [fkPersonId, setFkPersonId] = useState("");
+    let { personId } = useParams(); //hook that returns the key/value pair from personId so that the navigation works properly in react router. This is so that the correct information and person is displayed when clicking on them on the webpage
+    const [data,setData] = useState([]); //sets the data of the endpoint GetRatings to show what the person has rated a movie
+    const[genre,setGenre] = useState([]); //sets the state of genre to what genres the person likes
+    const[allGenres,setAllGenres] = useState([]); //gets a list of all genres and set the state to them
+    const[name,setName] = useState([]); //sets the state of name from the persons endpoint in the database
+    const [fkPersonId, setFkPersonId] = useState(""); //sets fkpersonId to the personId useParams when posting a new genre that the person likes
     const api = 'https://localhost:7283';
+
+    // a function that contains each call to make the use of useEffect smarter and easier to deal with if you want to add new data fetches
     const Calls = () =>{
         const fetchData = async () => {
             const result = await axios( `${api}/api/GetRatings/?personId=${personId}`);
@@ -109,7 +111,7 @@ color: #212121;
 border-radius: 0.2em;
 `;
 
-
+//Creates a post request to add new liked genres to an individual
 const PostGenre = async(e) => {
     setFkPersonId(personId);
     const selectedGenreId = e.target.value;

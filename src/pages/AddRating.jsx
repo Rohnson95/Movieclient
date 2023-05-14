@@ -7,11 +7,13 @@ import styled from 'styled-components';
 
 export default function AddRating() {
 let {movieId} = useParams();
-const [rating,setRating] = useState({});
-const [data,setData] = useState([]);
+const [rating,setRating] = useState({}); //Sets The rating from the ratings table in the database
+const [data,setData] = useState([]); //Sets the state to the data you get from TMDB_GET_INFO
     
 const api = 'https://localhost:7283';
 const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
+
+//Styled Components
  const Select = styled.select`
  width: 200px;
  background: #212121;
@@ -32,19 +34,20 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
  justify-content: center;
  `;
  const DivContainer = styled.div`
- background:#bb86fc;
+ background:#212121;
  border-radius: .3em;
- padding: .5em;
+ padding: .9em;
+ box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
  `;
  const P = styled.p`
  max-width: 600px;
- color: #121212;
+ color: #bb86fc;
  `;
  const H1 = styled.h1`
-  color: #121212;
+  color: #bb86fc;
  `;
  const H3 = styled.h3`
- color: #121212;
+ color: #bb86fc;
  `;
  const Button = styled.button`
  height: 3em;
@@ -65,6 +68,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
  }
  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
  `;
+    //Fetches Data from TMDB based on the movieId of the element selected
     useEffect (() => {
         const TMDB_GET_INFO = `https://api.themoviedb.org/3/movie/${movieId}?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US`
         const fetchData = async () => {
@@ -78,12 +82,14 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
         }
         fetchPerson();
     },[]);
+    //Sends a post request to the Database to save a movie based on the person that wants to add it
     const PostMovie = async(e) => {
 
         console.log(rating.original_title);
         const personId = e.target.value;
           await axios.post(`${api}/api/AddMovie/?personId=${personId}&movieName=${rating.original_title}`);
     };
+    //Posts a rating to the Database based on the person that's added the movie
     const PostRating = async(e) => {
             const val = parseInt(e.target.value);
           await axios.post(`${api}/api/GiveRating/?Name=${rating.original_title}&rating=${val}`);
@@ -91,6 +97,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
           console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     };
   return (
+    //Containers for ratings,persons and movies when you've selected one from the vast OPTIONS !!!
     <DivContainer>
         <label>
             <SelectDiv>
@@ -121,7 +128,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
         </label>
     <div>
             <Div className="title">
-            <H1>{rating.original_title}</H1>
+                <H1>{rating.original_title}</H1>
             </Div>
             <Div className="postercard">
                 <Img src={POSTER_PREFIX + rating.poster_path}></Img>
@@ -136,7 +143,6 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
                 <NavLink to="/movies"><Button>Go Back</Button></NavLink>
             </Div>
             
-            {/* <h3>{rating.overview}</h3> */}
     </div>
     </DivContainer>
     

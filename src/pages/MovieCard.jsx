@@ -27,6 +27,7 @@ max-width: 13em;
 display:flex;
 text-align: center;
 `;
+//Creates the shell for how each movie in the movies page is supposed to be displayed with styled components
 export default function MovieCard(props) {
   return (
     <CardListContainer>
