@@ -70,7 +70,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
  `;
     //Fetches Data from TMDB based on the movieId of the element selected
     useEffect (() => {
-        const TMDB_GET_INFO = `https://api.themoviedb.org/3/movie/${movieId}?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US`
+        const TMDB_GET_INFO = `https://api.themoviedb.org/3/movie/${movieId}?api_key=<<API-KEY>>&language=en-US`
         const fetchData = async () => {
             const result = await axios(TMDB_GET_INFO,);
             setRating(result.data);
