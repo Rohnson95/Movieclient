@@ -41,8 +41,10 @@ export default function LikedGenres(){
 const DivCard = styled.div`
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     font-size: 1.5em;
     width: 15em;
+    max-width: 340px;
     align-items: start;
     padding: 1em;
     margin: .5em;
@@ -52,13 +54,13 @@ const DivCard = styled.div`
     color: #212121;
 `;
 const P = styled.p`
-border: solid 1px black;
+border: solid 3px black;
 width:38px;
 display:flex;
 justify-content: center;
 border-radius: 50%;
-background: #444;
-color: #bb86fc;
+background: #1a1a1a;
+color: #ffff;
 transition: transform .5s cubic-bezier(0.77,0.2,0.05,1.0);
 &:hover {
     transform: scale(1.5);
@@ -82,6 +84,7 @@ font-size: .8rem;
 font-weight: 650;
 transition: transform .4s cubic-bezier(0.77,0.2,0.05,1.0);
 padding: .2em;
+border-radius: .5em;
 &:hover {
     transform: scale(1.1);
     background: #444;
@@ -95,7 +98,15 @@ width:15em;
 justify-content: center;
 padding: .1em;
 `;
-
+const H1 = styled.h1`
+font-size:2.5em;
+background:red;
+width: 250px;
+text-align:center;
+background:#bb86fc;
+color: #212121;
+border-radius: 0.2em;
+`;
 const PostGenre = async(e) => {
     setFkPersonId(personId);
     const selectedGenreId = e.target.value;
@@ -103,6 +114,13 @@ const PostGenre = async(e) => {
       Calls();
 };
     return(
+        <>
+        <Div>
+        <NavLink to="/"><Button>Go Back</Button></NavLink>
+        </Div>
+        <Div>
+        {name.map(nam =>(<H1>{nam.firstName}</H1>))}
+        </Div>
        <Div>
         <DivCard>
             <h2>Add New Genres</h2>
@@ -119,14 +137,13 @@ const PostGenre = async(e) => {
         <DivCard>
             <h2>Movies</h2>
             {data.map(rating =>(
-                <div>
+                <div key={rating.ratingId}>
                     <p>{rating.name}</p> 
                     <P>{rating.ratings}</P>
                 </div>
             ))}
         </DivCard>
         <DivCard className="info">
-            {name.map(nam =>(<h3>{nam.firstName}'s</h3>))}
             <h2>Liked Genres</h2>
              {genre.map(gen =>(
                 <div>
@@ -136,5 +153,6 @@ const PostGenre = async(e) => {
             <Outlet />
         </DivCard>
         </Div>
+        </>
     )
 }

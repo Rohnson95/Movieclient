@@ -43,8 +43,10 @@ useEffect(() => {
 }, [])
 
 return(
-    
+    <>
+    <h1>Users</h1>
     <Div className="home">
+        
         {data.map(item =>(
             <DivCard onClick={() => handleClick(item)} key = {item.personId}>
                <h1>{item.firstName}</h1>
@@ -54,6 +56,6 @@ return(
         ))}
         <Outlet />
     </Div>
-
+    </>
 )
 }
