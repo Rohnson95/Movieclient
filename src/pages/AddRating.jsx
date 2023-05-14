@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import {useState,useEffect} from 'react'
-import {Outlet,useParams} from 'react-router-dom'
+import {Outlet,useParams, NavLink} from 'react-router-dom'
 import styled from 'styled-components';
 
 
@@ -24,14 +24,46 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
  `;
  const Img = styled.img`
  width:300px;
+ border: solid 1px black;
  `;
  const Div = styled.div`
  display:flex;
  align-content: center;
  justify-content: center;
  `;
+ const DivContainer = styled.div`
+ background:#bb86fc;
+ border-radius: .3em;
+ padding: .5em;
+ `;
  const P = styled.p`
  max-width: 600px;
+ color: #121212;
+ `;
+ const H1 = styled.h1`
+  color: #121212;
+ `;
+ const H3 = styled.h3`
+ color: #121212;
+ `;
+ const Button = styled.button`
+ height: 3em;
+ width: 8em;
+ display:flex;
+ align-items: center;
+ justify-content: center;
+ background: #9b5de7;
+ font-size: .8rem;
+ font-weight: 650;
+ transition: transform .4s cubic-bezier(0.77,0.2,0.05,1.0);
+ padding: .2em;
+ border-radius: .5em;
+ &:hover {
+     transform: scale(1.1);
+     background: #444;
+     color: #bb86fc;
+ }
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
  `;
     useEffect (() => {
         const TMDB_GET_INFO = `https://api.themoviedb.org/3/movie/${movieId}?api_key=9baeecd677d8c50be742a741f245bcac&language=en-US`
@@ -59,7 +91,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
           console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     };
   return (
-    <div>
+    <DivContainer>
         <label>
             <SelectDiv>
                 <form>
@@ -89,7 +121,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
         </label>
     <div>
             <Div className="title">
-            <h1>{rating.original_title}</h1>
+            <H1>{rating.original_title}</H1>
             </Div>
             <Div className="postercard">
                 <Img src={POSTER_PREFIX + rating.poster_path}></Img>
@@ -98,12 +130,15 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
                 <P>{rating.overview}</P>
             </Div>
             <Div>
-                <h3>Rating: {(rating.vote_average)}</h3>
+                <H3>Rating: {(rating.vote_average)}</H3>
+            </Div>
+            <Div>
+                <NavLink to="/movies"><Button>Go Back</Button></NavLink>
             </Div>
             
             {/* <h3>{rating.overview}</h3> */}
     </div>
-    </div>
+    </DivContainer>
     
   )
 }

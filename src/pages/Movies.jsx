@@ -60,6 +60,12 @@ const Button = styled.button`
   box-shadow: 0px 0px 0px 0px #a29bfe;
 }
 `;
+const ButtonDiv = styled.div`
+display:flex;
+gap: 5px;
+
+
+`;
 
 export default function Movies() {
     const [data,setData] = useState({results:[]});
@@ -97,9 +103,10 @@ export default function Movies() {
   return (
     <>
     Page {data.page} of {data.total_pages}
-    <Button onClick = {nextPage}>Next Page</Button>
-    <br />
+    <ButtonDiv>
     <Button onClick = {prevPage}>Prev Page</Button>
+    <Button onClick = {nextPage}>Next Page</Button>
+    </ButtonDiv>
     <br />
     <Input type="text" placeholder="Search Movie" className="search" onChange={(e)=> setSearch(e.target.value)}/>
     <Outlet />
