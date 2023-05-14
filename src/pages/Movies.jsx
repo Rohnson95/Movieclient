@@ -2,10 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import {useState,useEffect} from 'react'
-import { Outlet, useNavigate, Link } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 //Pages
 import MovieCard from './MovieCard';
-import AddRating from './AddRating';
 
 const CardListContainer = styled.div`
 display:flex;
@@ -22,7 +21,7 @@ const MainContainer = styled.main`
 display:flex;
 flex-wrap: wrap;
 flex-direction: row;
-justify-content: start;
+place-content: center;
 align-items: start;
 align-content: start;
 min-height: 100vh;

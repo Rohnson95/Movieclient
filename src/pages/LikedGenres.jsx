@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {useState, useEffect,} from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
-export default function LikedGenres(){
 
+
+export default function LikedGenres(){
     let { personId } = useParams();
     const [data,setData] = useState([]);
     const[genre,setGenre] = useState([]);
@@ -107,6 +108,8 @@ background:#bb86fc;
 color: #212121;
 border-radius: 0.2em;
 `;
+
+
 const PostGenre = async(e) => {
     setFkPersonId(personId);
     const selectedGenreId = e.target.value;
@@ -122,7 +125,7 @@ const PostGenre = async(e) => {
         {name.map(nam =>(<H1>{nam.firstName}</H1>))}
         </Div>
        <Div>
-        <DivCard>
+        <DivCard className="add_genres">
             <h2>Add New Genres</h2>
             {allGenres.map((genres) =>{
                 if(!genre.find((gen) => gen.genreId === genres.genreId)) {
@@ -134,13 +137,15 @@ const PostGenre = async(e) => {
                 }
             })}
         </DivCard>
-        <DivCard>
+        <DivCard className="movies">
             <h2>Movies</h2>
             {data.map(rating =>(
+                
                 <div key={rating.ratingId}>
-                    <p>{rating.name}</p> 
+                    <p>{rating.name} </p> 
                     <P>{rating.ratings}</P>
                 </div>
+                
             ))}
         </DivCard>
         <DivCard className="info">

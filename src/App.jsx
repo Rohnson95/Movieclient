@@ -5,6 +5,8 @@ import {Route,
         createRoutesFromElements,
         RouterProvider} from 'react-router-dom';
 
+
+//Pages
 import CardList from './pages/Home';
 import RootLayout from './layouts/RootLayout';
 import LikedGenres from './pages/LikedGenres';
