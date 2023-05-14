@@ -98,7 +98,7 @@ const POSTER_PREFIX = 'https://image.tmdb.org/t/p/original';
                 <P>{rating.overview}</P>
             </Div>
             <Div>
-                <h3>Rating: {(rating.vote_average).toFixed(1)}</h3>
+                <h3>Rating: {(rating.vote_average)}</h3>
             </Div>
             
             {/* <h3>{rating.overview}</h3> */}
